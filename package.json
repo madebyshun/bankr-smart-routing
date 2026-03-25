@@ -1,0 +1,25 @@
+{
+  "name": "bankr-smart-routing",
+  "version": "1.0.0",
+  "description": "Smart model routing for Bankr LLM Gateway — auto-select the right model based on query complexity",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "keywords": [
+    "bankr",
+    "llm",
+    "routing",
+    "base",
+    "ai",
+    "openclaw",
+    "blue-agent"
+  ],
+  "author": "madebyshun",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
