@@ -113,11 +113,25 @@ Object containing all tier arrays.
 
 ## Pattern matching
 
+Priority order (first match wins):
+
 ```
-code tier:   code, deploy, contract, solidity, typescript, bug, error...
-full tier:   score, analyze, explain, compare, research, evaluate...
-mid tier:    builder, base, defi, nft, agent, token, price, crypto...
-light tier:  everything else
+code tier:      code, deploy, contract, solidity, typescript, javascript,
+                python, function, bug, error, implement, build, script,
+                debug, compile, syntax
+
+full tier:      score, analyze, explain, compare, research, what is,
+                how does, tell me about, deep, detail, strategy,
+                evaluate, assess, summarize, review
+
+mid tier:       how, what, where, when, why, can i, help, support,
+                claim, reward, earn, point, quest, refer, submit,
+                wallet, token, price, buy, sell, gm, gn, hello, hi,
+                hey, thx, thanks, builder, base, defi, nft, agent,
+                protocol, project, ecosystem, trend, market, crypto,
+                blockchain, swap, transaction
+
+light tier:     text.length < 60 OR everything else
 ```
 
 ---

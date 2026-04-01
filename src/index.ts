@@ -18,7 +18,7 @@ export const MODELS_LIGHT = [
   'gpt-5-mini',            // Mini stable
 ]
 
-/** Balanced models for crypto/ecosystem queries */
+/** Balanced models for crypto/ecosystem/community queries */
 export const MODELS_MID = [
   'gemini-3-flash',        // Google balanced ⭐
   'claude-haiku-4.5',      // Anthropic fast + smart
@@ -39,7 +39,7 @@ export const MODELS_FULL = [
   'gpt-5.2',               // GPT powerful
   'gemini-2.5-pro',        // Google pro stable
   'qwen3.5-plus',          // Qwen best
-  'claude-haiku-4.5',      // Fallback
+  'claude-haiku-4.5',      // Fallback fast
   'gpt-5.4',               // Final fallback
 ]
 
@@ -57,38 +57,47 @@ export const MODELS_CODE = [
 // ================================
 
 const CODE_PATTERNS = /code|deploy|contract|solidity|typescript|javascript|python|function|bug|error|implement|build|script|debug|compile|syntax/i
+
 const FULL_PATTERNS = /score|analyze|explain|compare|research|what is|how does|tell me about|deep|detail|strategy|evaluate|assess|summarize|review/i
-const MID_PATTERNS  = /builder|base|defi|nft|agent|protocol|project|ecosystem|trend|token|price|market|crypto|blockchain|swap|wallet|transaction/i
+
+// Community chatbot signals (greetings, help, rewards)
+const COMMUNITY_PATTERNS = /how|what|where|when|why|can i|help|support|claim|reward|earn|point|quest|refer|submit|wallet|token|price|buy|sell|gm|gn|hello|hi|hey|thx|thanks/i
+
+// Base/crypto ecosystem signals
+const MID_PATTERNS = /builder|base|defi|nft|agent|protocol|project|ecosystem|trend|market|crypto|blockchain|swap|transaction/i
 
 // ================================
-// MAIN FUNCTION
+// MAIN FUNCTIONS
 // ================================
 
 export type ModelTier = 'light' | 'mid' | 'full' | 'code'
 
 /**
- * Select the best models for a given query
- * Returns an ordered array of models to try (with fallback)
+ * Select the best models for a given query.
+ * Returns an ordered array of models to try (primary → fallback).
  */
 export function selectModels(text: string): string[] {
-  if (CODE_PATTERNS.test(text)) return MODELS_CODE
-  if (FULL_PATTERNS.test(text)) return MODELS_FULL
-  if (MID_PATTERNS.test(text))  return MODELS_MID
+  if (CODE_PATTERNS.test(text))      return MODELS_CODE
+  if (FULL_PATTERNS.test(text))      return MODELS_FULL
+  if (COMMUNITY_PATTERNS.test(text)) return MODELS_MID
+  if (MID_PATTERNS.test(text))       return MODELS_MID
+  if (text.length < 60)              return MODELS_LIGHT  // short casual chat
   return MODELS_LIGHT
 }
 
 /**
- * Get the tier name for a query
+ * Get the tier name for a query.
  */
 export function getTier(text: string): ModelTier {
-  if (CODE_PATTERNS.test(text)) return 'code'
-  if (FULL_PATTERNS.test(text)) return 'full'
-  if (MID_PATTERNS.test(text))  return 'mid'
+  if (CODE_PATTERNS.test(text))      return 'code'
+  if (FULL_PATTERNS.test(text))      return 'full'
+  if (COMMUNITY_PATTERNS.test(text)) return 'mid'
+  if (MID_PATTERNS.test(text))       return 'mid'
   return 'light'
 }
 
 /**
- * All available models across all tiers
+ * All available models across all tiers.
  */
 export const ALL_MODELS = {
   light: MODELS_LIGHT,

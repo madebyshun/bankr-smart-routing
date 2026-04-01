@@ -9,12 +9,12 @@ Auto-select the best Bankr LLM model based on query complexity.
 
 ## 4 Tiers
 
-| Tier | Best for | Models |
-|------|----------|--------|
-| `light` | Casual chat, simple questions | gemini-3.1-flash-lite, gpt-5-nano |
-| `mid` | Crypto, Base ecosystem, DeFi | gemini-3-flash, claude-haiku-4.5 |
-| `full` | Deep analysis, research, scoring | claude-sonnet-4.6, gemini-3-pro |
-| `code` | Code, contracts, technical tasks | qwen3-coder, gpt-5.2-codex |
+| Tier | Best for | Primary models |
+|------|----------|----------------|
+| `light` | Casual chat, short messages (<60 chars) | gemini-3.1-flash-lite, gpt-5-nano, qwen3.5-flash |
+| `mid` | Crypto, Base, DeFi, community chat | gemini-3-flash, claude-haiku-4.5, grok-4.1-fast |
+| `full` | Deep analysis, research, scoring | claude-sonnet-4.6, gemini-3-pro, deepseek-v3.2 |
+| `code` | Code, contracts, debugging | qwen3-coder, gpt-5.2-codex, claude-sonnet-4.6 |
 
 ## Usage
 
