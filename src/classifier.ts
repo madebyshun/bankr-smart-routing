@@ -12,7 +12,7 @@ Tiers:
 
 Rules:
 - Support both English and Vietnamese queries naturally.
-- If query mentions contract address, solidity, "viết code", "fix bug", "deploy", "function" → prefer 'code'.
+- If query mentions contract address, solidity, "viết code", "fix bug", "deploy", "function", "smart contract" → prefer 'code'.
 - Only return one word: light, mid, full or code. No explanation, no extra text.
 `;
 
